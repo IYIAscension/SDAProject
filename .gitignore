@@ -1,0 +1,6 @@
+# Ignore Visual Studio files.
+*.suo
+*.cache
+# Ignore compiled files.
+*.dll
+*.exe
