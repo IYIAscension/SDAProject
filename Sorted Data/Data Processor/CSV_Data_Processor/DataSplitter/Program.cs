@@ -11,9 +11,13 @@ namespace DataSplitter
 
         static void Main(string[] args)
         {
+            string expectedDir = Path.Combine(
+                parentDir, parentDir, parentDir,
+                parentDir, parentDir, parentDir
+            );
+
             string expectedPath = Path.Combine(
-                parentDir, parentDir, parentDir,
-                parentDir, parentDir, parentDir,
+                expectedDir,
                 "owid-covid-data.csv"
             );
 
@@ -96,7 +100,52 @@ namespace DataSplitter
                 Console.WriteLine("Press any key to continue with file import.");
                 Console.ReadKey();
                 file.BeginRead();
-                Console.WriteLine($"[\n{string.Join(",\n", file.ToString(2))}]");
+
+                string[] colNames = file.GetColumnNames();
+                int numColumns = colNames.Length;
+                string extension = ".data";
+
+                // Now filter by country.
+                Dictionary<string, StreamCollection> countryStreams = new Dictionary<string, StreamCollection>();
+                try
+                {
+                    foreach(object[] row in file)
+                    {
+                        // Index 2: country.
+                        string country = row[2] as string;
+                        try
+                        {
+                            countryStreams[country].Append(row);
+                        }
+                        catch(KeyNotFoundException)
+                        {
+                            // Generate filepaths.
+                            string countryDir = Path.Combine(expectedDir, country);
+                            if (!Directory.Exists(countryDir))
+                                Directory.CreateDirectory(countryDir);
+
+                            string[] filepaths = new string[numColumns - 3];
+                            for (int i = 3; i < numColumns; i++)
+                            {
+                                filepaths[i - 3] = Path.Combine(
+                                    countryDir,
+                                    Path.ChangeExtension(colNames[i], extension)
+                                );
+                            }
+
+                            StreamCollection collection = new StreamCollection(
+                                filepaths
+                            );
+                            collection.Append(row);
+                            countryStreams.Add(country, collection);
+                        }
+                    }
+                }
+                finally
+                {
+                    foreach (var entry in countryStreams)
+                        entry.Value.Dispose();
+                }
             }
             catch (FileNotFoundException)
             {

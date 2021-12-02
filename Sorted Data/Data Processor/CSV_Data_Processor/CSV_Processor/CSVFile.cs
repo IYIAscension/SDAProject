@@ -1,14 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace CSV_Processor
 {
-    public sealed class CSVFile
+    public sealed class CSVFile : IEnumerable<object[]>
     {
         private readonly string filepath;
 
         private readonly List<Column> columns = new List<Column>();
+        private int rows = 0;
 
         public CSVFile(string filepath)
         {
@@ -18,6 +20,16 @@ namespace CSV_Processor
             }
 
             this.filepath = filepath;
+        }
+
+        public string[] GetColumnNames()
+        {
+            int columnCount = columns.Count;
+            string[] names = new string[columnCount];
+            for (int i = 0; i < columnCount; i++)
+                names[i] = columns[i].name;
+
+            return names;
         }
 
         public object[] GetRow(int row)
@@ -38,6 +50,69 @@ namespace CSV_Processor
                 output[i] = columns[i].ToString(row);
 
             return output;
+        }
+
+        public struct Sampler
+        {
+            private readonly List<int> indices;
+            private CSVFile progenitor;
+
+            internal Sampler(CSVFile source, List<int> indices)
+            {
+                progenitor = source;
+                this.indices = indices;
+            }
+
+            public object[] GetRow(int row)
+            {
+                int indexCount = indices.Count;
+                object[] output = new object[indexCount];
+                for (int i = 0; i < indexCount; i++)
+                {
+                    output[i] = progenitor.columns[indices[i]].GetValue(row);
+                }
+                return output;
+            }
+        }
+
+        private int GetIndexOfColumn(string name)
+        {
+            for (int i = 0; i < columns.Count; i++)
+            {
+                if (columns[i].name == name)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public Sampler GetSampler(int columnMin, int columnMax)
+        {
+            if (columnMin < 0)
+                columnMin = 0;
+            if (columnMax < 0)
+                columnMax = columns.Count - 1;
+
+            List<int> indices = new List<int>();
+            for (int i = columnMin; i <= columnMax; i++)
+            {
+                indices.Add(i);
+            }
+            return new Sampler(this, indices);
+        }
+
+        public Sampler GetSampler(params string[] columns)
+        {
+            List<int> indices = new List<int>();
+            foreach(string columnName in columns)
+            {
+                int index = GetIndexOfColumn(columnName);
+                if (index != -1)
+                    indices.Add(index);
+            }
+
+            return new Sampler(this, indices);
         }
 
         public void BeginRead(int linesToRead = -1)
@@ -78,7 +153,6 @@ namespace CSV_Processor
 
                     // Now read the remainder of the file.
                     int columnCount = columns.Count;
-                    int line = 0;
                     bool cont = true;
                     double scalar = 100.0 / stream.Length;
                     while (!sr.EndOfStream && cont)
@@ -94,13 +168,13 @@ namespace CSV_Processor
                             catch (Exception e)
                             {
                                 Console.WriteLine(
-                                    $"CSV Reader: exception caught processing line {line}.\nAttempted to bind value [{parts[i]}] to column [{columns[i].name}]\nLine content: [{string.Join(", ", parts)}]\nException: {e}"
+                                    $"CSV Reader: exception caught processing line {rows}.\nAttempted to bind value [{parts[i]}] to column [{columns[i].name}]\nLine content: [{string.Join(", ", parts)}]\nException: {e}"
                                 );
                                 columns[i].Append(null);
                             }
                         }
-                        line++;
-                        cont = linesToRead < 0 || line < linesToRead;
+                        rows++;
+                        cont = linesToRead < 0 || rows < linesToRead;
                         double progress = stream.Position * scalar;
                         Console.SetCursorPosition(0, 0);
                         Console.Write(
@@ -130,5 +204,50 @@ namespace CSV_Processor
             foreach (string columnName in columnNames)
                 columns.Add(new ValueColumn<T>(columnName, converter));
         }
+
+        private struct RowEnumerator : IEnumerator<object[]>
+        {
+            private int rowIndex;
+            private object[] array;
+            private readonly CSVFile progenitor;
+
+            public RowEnumerator(CSVFile progenitor)
+            {
+                this.progenitor = progenitor;
+                rowIndex = 0;
+                array = progenitor.GetRow(rowIndex);
+            }
+
+            public object[] Current => array;
+
+            object IEnumerator.Current => array;
+
+            public void Dispose() { }
+
+            public bool MoveNext()
+            {
+                rowIndex += 1;
+                if (rowIndex < progenitor.rows)
+                {
+                    array = progenitor.GetRow(rowIndex);
+                    return true;
+                }
+
+                array = null;
+                return false;
+            }
+
+            public void Reset()
+            {
+                rowIndex = 0;
+                array = progenitor.GetRow(rowIndex);
+            }
+        }
+
+        public IEnumerator<object[]> GetEnumerator()
+            => new RowEnumerator(this);
+
+        IEnumerator IEnumerable.GetEnumerator()
+            => new RowEnumerator(this);
     }
 }
