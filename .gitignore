@@ -1,6 +1,11 @@
 # Ignore Visual Studio files.
 *.suo
 *.cache
+*.dtbcache.v2
+# Ignore Python files.
+*.cpython-38.pyc
 # Ignore compiled files.
 *.dll
 *.exe
+# Ignore massive CSV files.
+*.csv
