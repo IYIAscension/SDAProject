@@ -1,4 +1,9 @@
-# SDAProject
+# SDAProject ; connect and analysis branch
+
+Intended to manipulate and analyse stored data delevered by data selection through the data-processor
+
+
+
 
 In this project we wish to answer the research question:
 ``Does the degree of authoritarianism (significantly) influence the rollout of vaccinations against COVID-19?''
