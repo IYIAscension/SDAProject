@@ -8,6 +8,9 @@ if __name__ == "__main__":
         array = np.array(list(array))
     indexesArray = array[2:-1,2:]
     countryArray = array[2:-1,:1]
+    print(countryArray)
+    countryArray = [country.split(",")[0] for [country] in countryArray]
+    print(countryArray)
     prediction2021 = [["country", "VA", "PV", "GE", "RQ", "RL", "CC"]]
     order = 1
     for i, indexesCountry in enumerate(indexesArray):
@@ -47,7 +50,7 @@ if __name__ == "__main__":
             ccInterpolation = float(intrp.UnivariateSpline(ccX, list(reversed(ccIndex)), k=order)(len(ccIndex)))
         else:
             ccInterpolation = np.isnan
-        prediction2021.append([str(countryArray[i][0]), vaInterpolation,
+        prediction2021.append([str(countryArray[i]), vaInterpolation,
                                pvInterpolation,
                                geInterpolation,
                                rqInterpolation,
