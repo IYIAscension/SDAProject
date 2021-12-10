@@ -23,12 +23,15 @@ class Dataset:
         deaths = data_importer.import_time_series(
             country + '/total_deaths.data'
         )
+        excess_mortality = data_importer.import_numerics_handle_none(
+            country + '/excess_mortality.data', 0.0
+        )
 
         # Now filter by date to get indices for data slicing.
         (start, stop) = data_importer.limit_by_date(
             date,
-            # No start limit
-            None,
+            # January 1st, 2021
+            (2021, 1, 1),
             # November 30th, 2021
             (2021, 11, 30)
         )
@@ -36,6 +39,7 @@ class Dataset:
         self.__vaccinations = np.array(vaccinations[start:stop])
         self.__cases = np.array(cases[start:stop])
         self.__deaths = np.array(deaths[start:stop])
+        self.__excessmort = np.array(excess_mortality[start:stop])
 
     def get_population(self) -> Iterable[float]:
         """Returns the population statistics of this country as a Numpy
@@ -73,6 +77,15 @@ class Dataset:
         """
         return self.__deaths
 
+    def get_excess_mortality(self) -> Iterable[float]:
+        """Returns the excess mortality statistics of this country as a Numpy
+        array.
+
+        Returns:
+            Iterable[float]: The Numpy array of excess mortality.
+        """
+        return self.__excessmort
+
 
 def gather() -> Dict[str, Dataset]:
     output = dict()
@@ -84,7 +97,6 @@ def gather() -> Dict[str, Dataset]:
 
 
 if __name__ == "__main__":
-    dates = data_importer.import_dates('Netherlands/date.data')
     data = gather()
     print('Demo: first ten samples of case data from the Netherlands.')
     dataset = data['Netherlands']
