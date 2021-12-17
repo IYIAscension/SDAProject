@@ -286,6 +286,36 @@ namespace CSV_Processor
         public T GetColumn<T>(string name) where T : Column
             => (T)columns[GetIndexOfColumn(name)];
 
+        public void RenameColumn(string currentName, string newName)
+        {
+            if (string.IsNullOrWhiteSpace(newName))
+            {
+                throw new ArgumentException(
+                    $"The new name is either null or whitespace and is thus not valid!",
+                    nameof(newName)
+                );
+            }
+
+            int columnIndex = GetIndexOfColumn(currentName);
+            if (columnIndex == -1)
+            {
+                throw new ArgumentException(
+                    $"There is no column named {currentName} in this CSV file!",
+                    nameof(currentName)
+                );
+            }
+
+            if (GetIndexOfColumn(newName) != -1)
+            {
+                throw new ArgumentException(
+                    $"There is already a column named {newName} in this CSV file!",
+                    nameof(newName)
+                );
+            }
+
+            columns[columnIndex].name = newName;
+        }
+
         public override string ToString()
         {
             var sb = new System.Text.StringBuilder();

@@ -10,7 +10,7 @@ namespace CSV_Processor
     /// </summary>
     public abstract class Column
     {
-        public readonly string name;
+        public string name;
         public readonly Type backingType;
 
         protected Column(string name, Type backingType)
