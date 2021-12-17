@@ -326,15 +326,8 @@ namespace CSV_Processor
                 columnWidths[col] = name.Length;
                 for (int row = 0; row < rows; row++)
                 {
-                    object val = column.GetValue(row);
-                    string value;
-                    if (val is string str)
-                        value = str;
-                    else if (val is double num)
-                        value = num.ToString(BuiltinParsers.culture);
-                    else
-                        value = val.ToString();
-
+                    string value = column.ToString(row);
+                    
                     // Add the trailing comma if needed.
                     if (addsep)
                         value += separator;

@@ -29,11 +29,21 @@ namespace CSV_Processor
     public sealed class ValueColumn<T> : Column where T : struct
     {
         private readonly Func<string, T?> converter;
+        private Func<T, string> writer;
         private readonly List<T?> values = new List<T?>();
 
-        public ValueColumn(string columnName, Func<string, T?> converter) : base(columnName, typeof(T))
+        public void SetWriter(Func<T, string> writer)
+        {
+            if (writer == null)
+                this.writer = x => x.ToString();
+            else
+                this.writer = writer;
+        }
+
+        public ValueColumn(string columnName, Func<string, T?> converter, Func<T, string> writer = null) : base(columnName, typeof(T))
         {
             this.converter = converter;
+            SetWriter(writer);
         }
 
         public T? this[int index] => values[index];
@@ -60,7 +70,7 @@ namespace CSV_Processor
         public override string ToString(int index)
         {
             var value = values[index];
-            return value.HasValue ? value.ToString() : string.Empty;
+            return value.HasValue ? writer(value.Value) : string.Empty;
         }
     }
 
