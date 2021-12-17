@@ -48,6 +48,9 @@ namespace CSV_Processor
             values.Add(converter(value));
         }
 
+        public void Append(T? value)
+            => values.Add(value);
+
         public override string ToString()
             => string.Join(
                 ", ",
