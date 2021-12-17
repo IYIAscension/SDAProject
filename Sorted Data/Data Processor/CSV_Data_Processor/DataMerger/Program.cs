@@ -16,6 +16,9 @@ namespace DataMerger
             parentDir, parentDir, parentDir
         );
 
+        private static string Write(double value)
+            => value.ToString(BuiltinParsers.culture);
+
         static void Main(string[] args)
         {
             string file_a = Path.Combine(
@@ -46,15 +49,16 @@ namespace DataMerger
             var development = original_file.GetColumn<ValueColumn<double>>(
                 "human_development_index"
             );
+            development.SetWriter(Write);
 
             ValueColumn<double>
-                total_tests = new ValueColumn<double>("Total Tests", null),
-                total_deaths = new ValueColumn<double>("Total Deaths", null),
-                total_cases = new ValueColumn<double>("Total Cases", null),
-                population_size = new ValueColumn<double>("Population Size", null),
-                latest_cases = new ValueColumn<double>("Latest Cases", null),
-                total_vaccinations = new ValueColumn<double>("Total Vaccinations", null),
-                fully_vaccinated = new ValueColumn<double>("Fully Vaccinated", null);
+                total_tests = new ValueColumn<double>("Total Tests", null, Write),
+                total_deaths = new ValueColumn<double>("Total Deaths", null, Write),
+                total_cases = new ValueColumn<double>("Total Cases", null, Write),
+                population_size = new ValueColumn<double>("Population Size", null, Write),
+                latest_cases = new ValueColumn<double>("Latest Cases", null, Write),
+                total_vaccinations = new ValueColumn<double>("Total Vaccinations", null, Write),
+                fully_vaccinated = new ValueColumn<double>("Fully Vaccinated", null, Write);
             
             ValueColumn<double>[] columns = new ValueColumn<double>[]
             {
