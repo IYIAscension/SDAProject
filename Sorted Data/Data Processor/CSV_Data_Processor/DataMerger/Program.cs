@@ -22,17 +22,19 @@ namespace DataMerger
         static void Main(string[] args)
         {
             string file_a = Path.Combine(
-                expectedDir, "country_data_orig.csv"
+                expectedDir, "inputdata.csv"
             );
 
             CSVFile original_file = new CSVFile(file_a);
-            original_file.BindTextColumn("Country");
+            original_file.BindTextColumn("country");
             original_file.BindValueColumns(
                 BuiltinParsers.ParseDouble,
-                "total_tests",
-                "total_deaths",
-                "total_cases",
-                "human_development_index"
+                "VA",
+                "PV",
+                "GE",
+                "RQ",
+                "RL",
+                "CC"
             );
             try
             {
@@ -45,11 +47,20 @@ namespace DataMerger
                 return;
             }
 
-            TextColumn countries = original_file.GetColumn<TextColumn>(0);
-            var development = original_file.GetColumn<ValueColumn<double>>(
-                "human_development_index"
-            );
-            development.SetWriter(Write);
+            original_file.GetColumn<ValueColumn<double>>("VA").SetWriter(Write);
+            original_file.GetColumn<ValueColumn<double>>("PV").SetWriter(Write);
+            original_file.GetColumn<ValueColumn<double>>("GE").SetWriter(Write);
+            original_file.GetColumn<ValueColumn<double>>("RQ").SetWriter(Write);
+            original_file.GetColumn<ValueColumn<double>>("RL").SetWriter(Write);
+            original_file.GetColumn<ValueColumn<double>>("CC").SetWriter(Write);
+
+            original_file.RenameColumn("country", "Country");
+            original_file.RenameColumn("VA", "Voice & Accountability");
+            original_file.RenameColumn("PV", "Pol. Stability & Abs. of Violence");
+            original_file.RenameColumn("GE", "Govt. Effectiveness");
+            original_file.RenameColumn("RQ", "Regulatory Quality");
+            original_file.RenameColumn("RL", "Rule of Law");
+            original_file.RenameColumn("CC", "Control of Corruption");
 
             ValueColumn<double>
                 total_tests = new ValueColumn<double>("Total Tests", null, Write),
@@ -81,27 +92,75 @@ namespace DataMerger
                 "people_fully_vaccinated.data"
             };
 
+            TextColumn countries = original_file.GetColumn<TextColumn>(0);
+
+            Dictionary<string, string> remaps = new Dictionary<string, string>();
+            string remapfilePath = Path.Combine(expectedDir, "binder.txt");
+            if (File.Exists(remapfilePath))
+            {
+                foreach(string line in File.ReadAllLines(remapfilePath))
+                {
+                    string[] parts = line.Split(':');
+                    remaps.Add(parts[0].Trim(), parts[1].Trim());
+                }
+            }
+
             for (int i = 0; i < countries.Length; i++)
             {
                 string country = countries[i];
-                while (!Gatherer.countryNames.Contains(country))
+                bool invalid = !Gatherer.countryNames.Contains(country);
+                if (invalid)
                 {
-                    Console.Write($"Country [{country}] not found. Enter the name to search under.\nName:");
-                    country = Console.ReadLine();
+                    // Try a remap.
+                    if (remaps.TryGetValue(country, out string boundName))
+                    {
+                        string hold = country;
+                        country = boundName;
+                        invalid = !Gatherer.countryNames.Contains(country);
+                        if (invalid)
+                        {
+                            boundName = country;
+                            while (invalid)
+                            {
+                                Console.Write(
+                                    $"Country [{country}] not found. Enter the name to search under.\nName:"
+                                );
+                                country = Console.ReadLine();
+                                invalid = !Gatherer.countryNames.Contains(country);
+                            }
+
+                            remaps[hold] = country;
+                        }
+                    }
+                    else
+                    {
+                        string srcName = country;
+                        while (invalid)
+                        {
+                            Console.Write(
+                                $"Country [{country}] not found. Enter the name to search under.\nName:"
+                            );
+                            country = Console.ReadLine();
+                            invalid = !Gatherer.countryNames.Contains(country);
+                        }
+
+                        remaps.Add(srcName, country);
+                    }
                 }
+                
 
                 for (int c = 0; c < 7; c++)
                     columns[c].Append(Gatherer.GetFinalTimeSeries(country, datasets[c]));
             }
 
-            CSVFile output = new CSVFile(
-                countries, development, total_tests, total_deaths,
-                total_cases, population_size, latest_cases,
-                total_vaccinations, fully_vaccinated
-            );
             File.WriteAllText(
                 Path.Combine(expectedDir, "Merged.csv"),
-                output.ToStringAligned()
+                original_file.ToStringAligned()
+            );
+
+            File.WriteAllLines(
+                remapfilePath,
+                remaps.Select(x => $"{x.Key}:{x.Value}")
             );
         }
     }
