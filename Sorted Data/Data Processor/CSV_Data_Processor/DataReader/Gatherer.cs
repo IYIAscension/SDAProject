@@ -132,7 +132,7 @@ namespace DataReader
             }
         }
 
-        public static double GetFinalTimeSeries(string countryName, string file)
+        public static double? GetFinalTimeSeries(string countryName, string file)
         {
             string path = Path.Combine(expectedDir, countryName, file);
 
@@ -145,7 +145,7 @@ namespace DataReader
                 using (var stream = File.OpenRead(path))
                 {
                     int count = (int)(stream.Length / 9);
-                    double last_val = 0.0;
+                    double? last_val = null;
 
                     for (int i = 0; i < count; i++)
                     {
