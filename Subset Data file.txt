@@ -1,0 +1,185 @@
+1
+Europe:
+'Albania',
+'Andorra',
+'Armenia',
+'Austria',
+'Azerbaijan',	
+'Belarus',
+'Belgium',
+'Bosnia and Herzegovina',
+'Bulgaria',
+'Croatia',
+'Cyprus',
+'Czech Republic',
+'Denmark',
+'Estonia',	
+'Finland',
+'France',
+'Georgia',
+'Germany',
+'Greece',	
+'Hungary',	
+'Iceland',
+'Ireland',
+'Italy',
+'Kazakhstan',
+'Kosovo',	
+'Latvia',
+'Liechtenstein',
+'Lithuania',
+'Luxembourg',	
+'Macedonia',
+'Malta',
+'Moldova',
+'Monaco',
+'Montenegro',
+'Netherlands',
+'Norway',	
+'Poland',
+'Portugal',	
+'Romania',
+'Russia',
+'San Marino',
+'Serbia',
+'Slovakia',
+'Slovenia',
+'Spain',
+'Sweden',
+'Switzerland',	
+'Turkey',	
+'Ukraine',
+'United Kingdom',
+'Vatican City']	
+
+2
+Middle-East:
+Cyprus, 
+Lebanon, 
+Syria, 
+Iraq, 
+Iran, 
+Israel, 
+Jordan, 
+Saudi Arabia, 
+Kuwait, 
+Qatar, 
+Bahrain, 
+United Arab Emirates, 
+Oman, 
+Yemen
+
+3
+Northern Africa:
+Algeria	
+Egypt
+Libya
+Morocco
+Sudan
+Tunisia
+Western Sahara
+
+4
+West Africa:
+Benin
+Burkina Faso
+Cape Verde
+Côte d'Ivoire
+Gambia
+Ghana
+Guinea
+Guinea-Bissau
+Liberia
+Mali 
+Mauritania
+Niger
+Nigeria
+Saint Helena (UK)
+Senegal
+Sierra Leone
+Togo
+
+5
+Central Africa:
+Angola
+Cameroon
+Central African Republic
+Chad
+Congo, Dem. Rep.
+Congo, Rep. 
+Equatorial Guinea
+Gabon
+São Tomé & Príncipe	
+ 	 
+
+6
+European Union:
+'Austria', 
+'Belgium', 
+'Bulgaria', 
+'Croatia', 
+'Cyprus', 
+'Czechia', 
+'Denmark', 
+'Estonia',
+'Finland',
+'France',
+'Germany',
+'Greece',
+'Hungary', 
+'Ireland',
+'Italy',
+'Latvia', 
+'Lithuania', 
+'Luxembourg', 
+'Malta', 
+'Netherlands', 
+'Poland', 
+'Portugal', 
+'Romania', 
+'Slovakia', 
+'Slovenia', 
+'Spain',
+'Sweden',
+
+7
+OECD Countries:
+['Austria', 'Australia', 'Belgium', 'Canada', 'Chile', 'Colombia', 'Costa Rica', 
+'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 
+'Iceland', 'Ireland', 'Israel', 'Italy', 'Japan', 'Korea', 'Latvia', 'Lithuania', 'Luxembourg', 
+'Mexico', 'Netherlands', 'New Zealand', 'Norway', 'Poland', 'Portugal', 'Slovak Republic', 
+'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Turkey', 'United Kingdom', 'United States'],
+
+8
+Euro Countries:
+['Austria', 'Belgium', 'Cyprus', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Ireland', 'Italy', 
+'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Portugal', 'Slovakia', 'Slovenia', 'Spain'],
+
+9
+BRICS:
+Brazil,
+Russia,
+India,
+China,
+South Africa,
+
+10
+OPEC:
+Algeria 
+Angola
+Equatorial Guinea 
+Gabon 
+Iran 
+Iraq
+Kuwait 
+Libya
+Nigeria
+Republic of the Congo 
+Saudi Arabia
+United Arab Emirates
+Venezuela
+
+
+
+
+
