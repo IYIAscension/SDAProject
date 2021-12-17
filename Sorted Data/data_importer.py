@@ -193,6 +193,43 @@ def import_time_series(filepath: str) -> List[float]:
     return output
 
 
+def import_final(filepath: str) -> Optional[float]:
+    """Reads a targeted file and interprets the bytes therein as a long list
+    of 64-bit floating point numbers. Empty-marked values are set to the
+    previously known value, or 0.0 for initial values. Returns the last value
+    in the sequence.
+
+    Args:
+        filepath (str): The path to the file to read.
+
+    Returns:
+        Optional[float]: The final value that was read, or None if no data is
+        in the set.
+    """
+    # Total size needs to be aligned to 16 bytes.
+    # Data is 9 bytes -> 7 bytes of padding.
+    fmt = "xxxxxxxBd"
+    padding = b'\00\00\00\00\00\00\00'
+    last_value = None
+    with open(filepath, 'rb') as file:
+        bytes = file.read()
+
+        # Each data object is 9 bytes.
+        segments = int(len(bytes) / 9)
+        for segment in range(segments):
+            block_start = segment * 9
+            block_end = block_start + 9
+            has_value, value = struct.unpack(
+                fmt,
+                padding + bytes[block_start:block_end]
+            )
+            if has_value > 0:
+                last_value = value
+
+
+    return last_value
+
+
 def date_equal(a: Tuple[int, int, int], b: Tuple[int, int, int]) -> bool:
     return a is not None and \
            b is not None and \
