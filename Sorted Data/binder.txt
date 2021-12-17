@@ -1,0 +1,18 @@
+Brunei Darussalam:Brunei
+Côte d'Ivoire:Cote d'Ivoire
+Czech Republic:Czechia
+French Guiana:Guyana
+Hong Kong SAR:Hong Kong
+Kyrgyz Republic:Kyrgyzstan
+Korea:South Korea
+Lao PDR:Laos
+Macao SAR:Macao
+Macedonia:North Macedonia
+Puerto Rico:United States
+Russian Federation:Russia
+São Tomé and Principe:Sao Tome and Principe
+Slovak Republic:Slovakia
+Swaziland:Eswatini
+Syrian Arab Republic:Syria
+Timor-Leste:Timor
+West Bank and Gaza:Palestine
