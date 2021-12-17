@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "DataMerger/1.0.0": {
+        "dependencies": {
+          "CSV_Processor": "1.0.0",
+          "DataReader": "1.0.0"
+        },
+        "runtime": {
+          "DataMerger.dll": {}
+        }
+      },
+      "CSV_Processor/1.0.0": {
+        "runtime": {
+          "CSV_Processor.dll": {}
+        }
+      },
+      "DataReader/1.0.0": {
+        "runtime": {
+          "DataReader.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DataMerger/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CSV_Processor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataReader/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
