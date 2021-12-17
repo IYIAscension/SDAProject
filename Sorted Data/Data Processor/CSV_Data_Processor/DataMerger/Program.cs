@@ -153,6 +153,16 @@ namespace DataMerger
                     columns[c].Append(Gatherer.GetFinalTimeSeries(country, datasets[c]));
             }
 
+            original_file.AddColumns(
+                total_tests,
+                total_deaths,
+                total_cases,
+                population_size,
+                latest_cases,
+                total_vaccinations,
+                fully_vaccinated
+            );
+
             File.WriteAllText(
                 Path.Combine(expectedDir, "Merged.csv"),
                 original_file.ToStringAligned()
