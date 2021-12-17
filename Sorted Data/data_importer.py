@@ -87,11 +87,7 @@ def import_numerics(filepath: str) -> List[Optional[float]]:
                 padding + bytes[block_start:block_end]
             )
             if has_value > 0:
-                # For some reason Python makes them a factor of 10 bigger.
-                # That, or C# did it. Either way, fix this data skewing.
-                # Either Microsoft ff-ed up the double parser or there's
-                # some inter-language weirdness at play.
-                output.append(value * 0.1)
+                output.append(value)
             else:
                 output.append(None)
 
@@ -127,11 +123,7 @@ def import_numerics_handle_none(filepath: str, default: float) -> List[float]:
                 padding + bytes[block_start:block_end]
             )
             if has_value > 0:
-                # For some reason Python makes them a factor of 10 bigger.
-                # That, or C# did it. Either way, fix this data skewing.
-                # Either Microsoft ff-ed up the double parser or there's
-                # some inter-language weirdness at play.
-                output.append(value * 0.1)
+                output.append(value)
             else:
                 output.append(default)
 
@@ -194,11 +186,7 @@ def import_time_series(filepath: str) -> List[float]:
                 padding + bytes[block_start:block_end]
             )
             if has_value > 0:
-                # For some reason Python makes them a factor of 10 bigger.
-                # That, or C# did it. Either way, fix this data skewing.
-                # Either Microsoft ff-ed up the double parser or there's
-                # some inter-language weirdness at play.
-                last_value = value * 0.1
+                last_value = value
 
             output.append(last_value)
 

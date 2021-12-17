@@ -19,6 +19,7 @@ namespace CSV_Processor
             this.backingType = backingType;
         }
 
+        public abstract int Length { get; }
         public abstract void Append(string value);
         public abstract override string ToString();
         public abstract string ToString(int index);
@@ -36,6 +37,8 @@ namespace CSV_Processor
         }
 
         public T? this[int index] => values[index];
+
+        public override int Length => values.Count;
 
         public override object GetValue(int index)
             => values[index];
@@ -66,6 +69,8 @@ namespace CSV_Processor
         { }
 
         public string this[int index] => values[index];
+
+        public override int Length => values.Count;
 
         public override object GetValue(int index)
             => values[index];

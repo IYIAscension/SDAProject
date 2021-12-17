@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -134,7 +135,7 @@ namespace CSV_Processor
                     // If columns are missing, add text columns for them.
                     for(int i = 0; i < parts.Length; i++)
                     {
-                        string columnName = parts[i];
+                        string columnName = parts[i].Trim();
                         try
                         {
                             if (columns[i].name != columnName)
@@ -249,5 +250,96 @@ namespace CSV_Processor
 
         IEnumerator IEnumerable.GetEnumerator()
             => new RowEnumerator(this);
+
+        public Column this[int index]
+            => columns[index];
+
+        public Column this[string name]
+            => columns[GetIndexOfColumn(name)];
+
+        public T GetColumn<T>(int index) where T : Column
+            => (T)columns[index];
+
+        public T GetColumn<T>(string name) where T : Column
+            => (T)columns[GetIndexOfColumn(name)];
+
+        public override string ToString()
+        {
+            var sb = new System.Text.StringBuilder();
+            // Compile headers.
+            string separator = ", ";
+            sb.AppendJoin(separator, columns.Select(x => x.name));
+            sb.AppendLine();
+
+            int columnCount = columns.Count;
+            for (int row = 0; row < rows; row++)
+            {
+                // Compile this row data efficiently.
+                sb.AppendJoin(separator, columns.Select(x => x.GetValue(row)));
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
+        }
+
+        public string ToStringAligned()
+        {
+            // Apologies to RAM memory, this may sting. We need string data.
+            string[,] valueMatrix = new string[rows+1, columns.Count];
+            int columnCount = columns.Count;
+            int[] columnWidths = new int[columnCount];
+            string separator = ", ";
+
+            // Fill the matrix column-wise.
+            for (int col = 0; col < columnCount; col++)
+            {
+                Column column = columns[col];
+                string name = column.name;
+                if (col != columnCount - 1)
+                    name += separator;
+
+                valueMatrix[0, col] = name;
+                columnWidths[col] = name.Length;
+                for (int row = 0; row < rows; row++)
+                {
+                    object val = column.GetValue(row);
+                    string value;
+                    if (val is string str)
+                        value = str;
+                    else if (val is double num)
+                        value = num.ToString(BuiltinParsers.culture);
+                    else
+                        value = val.ToString();
+
+                    // Add the trailing comma if needed.
+                    int writeRow = row + 1;
+                    if (writeRow != rows)
+                        value += separator;
+
+                    columnWidths[col] = Math.Max(
+                        columnWidths[col], value.Length
+                    );
+                    valueMatrix[writeRow, col] = value;
+                }
+            }
+
+            // That created a lot of garbage. Sorry, C#.
+            // Now we have the CSV as a string matrix, including headers.
+            // Start writing the data in a padded format.
+            var sb = new System.Text.StringBuilder();
+            int padded = rows + 1;
+            for (int row = 0; row < padded; row++)
+            {
+                for (int col = 0; col < columnCount; col++)
+                {
+                    sb.Append(
+                        valueMatrix[row, col].PadRight(columnWidths[col])
+                    );
+                }
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
+        }
     }
 }

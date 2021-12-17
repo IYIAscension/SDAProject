@@ -4,6 +4,8 @@ namespace CSV_Processor
 {
     public static class BuiltinParsers
     {
+        public static readonly System.Globalization.CultureInfo culture = System.Globalization.CultureInfo.GetCultureInfo("en-us");
+
         public static DateTime? ParseDateTime(string str)
         {
             if (string.IsNullOrWhiteSpace(str))
@@ -27,7 +29,7 @@ namespace CSV_Processor
             if (string.IsNullOrWhiteSpace(str))
                 return null;
 
-            return double.Parse(str);
+            return double.Parse(str, culture);
         }
     }
 }
