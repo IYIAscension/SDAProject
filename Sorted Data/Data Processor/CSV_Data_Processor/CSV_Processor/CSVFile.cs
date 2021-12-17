@@ -280,6 +280,12 @@ namespace CSV_Processor
         public Column this[string name]
             => columns[GetIndexOfColumn(name)];
 
+        public void AddColumn(Column column)
+            => columns.Add(column);
+
+        public void AddColumns(params Column[] columns)
+            => this.columns.AddRange(columns);
+
         public T GetColumn<T>(int index) where T : Column
             => (T)columns[index];
 
