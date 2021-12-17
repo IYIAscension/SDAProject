@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSV_Processor", "CSV_Proces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMerger", "DataMerger\DataMerger.csproj", "{A485BC0A-4960-4F4D-969B-73E255E032CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataReader", "DataReader\DataReader.csproj", "{2D93A484-C48C-4738-8C71-DFCC85C41E51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A485BC0A-4960-4F4D-969B-73E255E032CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A485BC0A-4960-4F4D-969B-73E255E032CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A485BC0A-4960-4F4D-969B-73E255E032CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D93A484-C48C-4738-8C71-DFCC85C41E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D93A484-C48C-4738-8C71-DFCC85C41E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D93A484-C48C-4738-8C71-DFCC85C41E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D93A484-C48C-4738-8C71-DFCC85C41E51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
