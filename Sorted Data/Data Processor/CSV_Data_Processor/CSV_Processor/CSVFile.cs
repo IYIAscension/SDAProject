@@ -23,6 +23,29 @@ namespace CSV_Processor
             this.filepath = filepath;
         }
 
+        public CSVFile(params Column[] columns)
+        {
+            int length = columns.Length;
+            if (length > 1)
+            {
+                rows = columns[0].Length;
+
+                for (int i = 1; i < length; i++)
+                {
+                    if (columns[i].Length != rows)
+                        throw new ArgumentOutOfRangeException(
+                            $"The provided columns must be of equal length. Column {i} was found to differ from the length as set by the first provided column."
+                        );
+                }
+
+                this.columns = new List<Column>(columns);
+            }
+            else
+            {
+                this.columns = new List<Column>();
+            }
+        }
+
         public string[] GetColumnNames()
         {
             int columnCount = columns.Count;
@@ -295,7 +318,8 @@ namespace CSV_Processor
             {
                 Column column = columns[col];
                 string name = column.name;
-                if (col != columnCount - 1)
+                bool addsep = col != columnCount - 1;
+                if (addsep)
                     name += separator;
 
                 valueMatrix[0, col] = name;
@@ -312,14 +336,13 @@ namespace CSV_Processor
                         value = val.ToString();
 
                     // Add the trailing comma if needed.
-                    int writeRow = row + 1;
-                    if (writeRow != rows)
+                    if (addsep)
                         value += separator;
 
                     columnWidths[col] = Math.Max(
                         columnWidths[col], value.Length
                     );
-                    valueMatrix[writeRow, col] = value;
+                    valueMatrix[row+1, col] = value;
                 }
             }
 
@@ -333,7 +356,7 @@ namespace CSV_Processor
                 for (int col = 0; col < columnCount; col++)
                 {
                     sb.Append(
-                        valueMatrix[row, col].PadRight(columnWidths[col])
+                        valueMatrix[row, col].PadLeft(columnWidths[col])
                     );
                 }
                 sb.AppendLine();
