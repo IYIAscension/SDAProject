@@ -66,8 +66,6 @@ namespace DataMerger
                 total_tests = new ValueColumn<double>("Total Tests", null, Write),
                 total_deaths = new ValueColumn<double>("Total Deaths", null, Write),
                 total_cases = new ValueColumn<double>("Total Cases", null, Write),
-                population_size = new ValueColumn<double>("Population Size", null, Write),
-                latest_cases = new ValueColumn<double>("Latest Cases", null, Write),
                 total_vaccinations = new ValueColumn<double>("Total Vaccinations", null, Write),
                 fully_vaccinated = new ValueColumn<double>("Fully Vaccinated", null, Write);
             
@@ -76,8 +74,6 @@ namespace DataMerger
                 total_tests,
                 total_deaths,
                 total_cases,
-                population_size,
-                latest_cases,
                 total_vaccinations,
                 fully_vaccinated
             };
@@ -86,8 +82,6 @@ namespace DataMerger
                 "total_tests.data",
                 "total_deaths.data",
                 "total_cases.data",
-                "population.data",
-                "new_cases.data",
                 "total_vaccinations.data",
                 "people_fully_vaccinated.data"
             };
@@ -149,7 +143,7 @@ namespace DataMerger
                 }
                 
 
-                for (int c = 0; c < 7; c++)
+                for (int c = 0; c < columns.Length; c++)
                     columns[c].Append(Gatherer.GetFinalTimeSeries(country, datasets[c]));
             }
 
@@ -157,8 +151,6 @@ namespace DataMerger
                 total_tests,
                 total_deaths,
                 total_cases,
-                population_size,
-                latest_cases,
                 total_vaccinations,
                 fully_vaccinated
             );
