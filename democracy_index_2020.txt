@@ -1,0 +1,165 @@
+Afghanistan, 28.50
+Albania, 60.80
+Algeria, 37.70
+Angola, 36.60
+Argentina, 69.50
+Armenia, 53.50
+Australia, 89.60
+Austria, 81.60
+Azerbaijan, 26.80
+Bahrain, 24.90
+Bangladesh, 59.90
+Belarus, 25.90
+Belgium, 75.10
+Benin, 45.80
+Bhutan, 57.10
+Bolivia, 50.80
+Bosnia and Herzegovina, 48.40
+Botswana, 76.20
+Brazil, 69.20
+Bulgaria, 67.10
+Burkina Faso, 37.30
+Burundi, 21.40
+Cambodia, 31.00
+Cameroon, 27.70
+Canada, 92.40
+Cape Verde, 76.50
+Central African Republic, 13.20
+Chad, 15.50
+Chile, 82.80
+China, 22.70
+Colombia, 70.40
+Comoros, 30.90
+Democratic Republic of Congo, 11.30
+Congo, 31.10
+Costa Rica, 81.60
+Cote d'Ivoire, 41.10
+Croatia, 65.00
+Cuba, 28.40
+Cyprus, 75.60
+Czechia, 76.70
+Denmark, 91.50
+Djibouti, 27.10
+Dominican Republic, 63.20
+Ecuador, 61.30
+Egypt, 29.30
+El Salvador, 59.00
+Equatorial Guinea, 19.20
+Eritrea, 21.50
+Estonia, 78.40
+Ethiopia, 33.80
+Fiji, 57.20
+Finland, 92.00
+France, 79.90
+Gabon, 35.40
+Gambia, 44.90
+Georgia, 53.10
+Germany, 86.70
+Ghana, 65.00
+Greece, 73.90
+Guatemala, 49.70
+Guinea, 30.80
+Guinea-Bissau, 26.30
+Guyana, 60.10
+Haiti, 42.20
+Honduras, 53.60
+Hong Kong, 55.70
+Hungary, 65.60
+Iceland, 93.70
+India, 66.10
+Indonesia, 63.00
+Iran, 22.00
+Iraq, 36.20
+Ireland, 90.50
+Israel, 78.40
+Italy, 77.40
+Jamaica, 71.30
+Japan, 81.30
+Jordan, 36.20
+Kazakhstan, 31.40
+Kenya, 50.50
+Kuwait, 38.00
+Kyrgyzstan, 42.10
+Laos, 17.70
+Latvia, 72.40
+Lebanon, 41.60
+Lesotho, 63.00
+Liberia, 53.20
+Libya, 19.50
+Lithuania, 71.30
+Luxembourg, 86.80
+North Macedonia, 58.90
+Madagascar, 57.00
+Malawi, 57.40
+Malaysia, 71.90
+Mali, 39.30
+Malta, 76.80
+Mauritania, 39.20
+Mauritius, 81.40
+Mexico, 60.70
+Moldova, 57.80
+Mongolia, 64.80
+Montenegro, 57.70
+Morocco, 50.40
+Mozambique, 35.10
+Myanmar, 30.40
+Namibia, 65.20
+Nepal, 52.20
+Netherlands, 89.60
+New Zealand, 92.50
+Nicaragua, 36.00
+Niger, 32.90
+Nigeria, 41.00
+Norway, 98.10
+Oman, 30.00
+Pakistan, 43.10
+Palestine, 38.30
+Panama, 71.80
+Papua New Guinea, 61.00
+Paraguay, 61.80
+Peru, 65.30
+Philippines, 65.60
+Poland, 68.50
+Portugal, 79.00
+Qatar, 32.40
+Romania, 64.00
+Russia, 33.10
+Rwanda, 31.00
+Saudi Arabia, 20.80
+Senegal, 56.70
+Serbia, 62.20
+Sierra Leone, 48.60
+Singapore, 60.30
+Slovakia, 69.70
+Slovenia, 75.40
+South Africa, 70.50
+South Korea, 80.10
+Spain, 81.20
+Sri Lanka, 61.40
+Sudan, 25.40
+Suriname, 68.20
+Sweden, 92.60
+Switzerland, 88.30
+Syria, 14.30
+Taiwan, 89.40
+Tajikistan, 19.40
+Tanzania, 51.00
+Thailand, 60.40
+Timor, 70.60
+Togo, 28.00
+Trinidad and Tobago, 71.60
+Tunisia, 65.90
+Turkey, 44.80
+Turkmenistan, 17.20
+Uganda, 49.40
+Ukraine, 58.10
+United Arab Emirates, 27.00
+United Kingdom, 85.40
+United States, 79.20
+Uruguay, 86.10
+Uzbekistan, 21.20
+Venezuela, 27.60
+Vietnam, 29.40
+Yemen, 19.50
+Zambia, 48.60
+Zimbabwe, 31.60
