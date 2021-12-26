@@ -21,3 +21,5 @@ python3 predictionComparison.py
 
 regRegression.ipynb is a notebook which transforms Merged.csv into networks.
 We used the first network, based on Ridge, four our poster and analysis.
+
+For info about data processing files, see the readme.txt inside the Sorted Data folder.
