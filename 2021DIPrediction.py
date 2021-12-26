@@ -4,7 +4,7 @@
 # Description: Predicts the 2021 index values and writes them to
 #              data/2021IndexPredictions.txt. Using "reuse" as an argument
 #              reuses the 2020 values as 2021 predictions.
-#              If not, amountVals, endMult and order can adjust predictions.
+#              If not, amountYears, endMult and order can adjust predictions.
 
 import scipy.interpolate as intrp
 import numpy as np
@@ -24,9 +24,9 @@ if __name__ == "__main__":
     else:
         # amountYears is the amount of years prior to 2021
         # you want to interpolate through.
-        amountVals = 3
+        amountYears = 3
         # Purely the values of years prior to 2021
-        indexesArray = array[2:-1,2:(2+amountVals*6)]
+        indexesArray = array[2:-1,2:(2+amountYears*6)]
         # List of countries. (At the start of each row.)
         countryArray = array[2:-1,:1]
         countryArray = [country.split(",")[0] for [country] in countryArray]
