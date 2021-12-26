@@ -96,7 +96,9 @@ namespace DataSplitter
                     "excess_mortality",
                     "excess_mortality_cumulative_per_million"
                 );
+                // Yes, the OWID file is really THAT large. :|
 
+                // Given the sheer size of the file, ask the user to confirm.
                 Console.WriteLine("Press any key to continue with file import.");
                 Console.ReadKey();
                 file.BeginRead();
@@ -143,12 +145,14 @@ namespace DataSplitter
                 }
                 finally
                 {
+                    // Dispose all of the streams in any scenario.
                     foreach (var entry in countryStreams)
                         entry.Value.Dispose();
                 }
             }
             catch (FileNotFoundException)
             {
+                // Target file is missing; abort!
                 Console.WriteLine(
                     "CSV file is not at the expected location! Aborting!"
                 );
