@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "DataSplitter/1.0.0": {
+        "dependencies": {
+          "CSV_Processor": "1.0.0"
+        },
+        "runtime": {
+          "DataSplitter.dll": {}
+        }
+      },
+      "CSV_Processor/1.0.0": {
+        "runtime": {
+          "CSV_Processor.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DataSplitter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CSV_Processor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

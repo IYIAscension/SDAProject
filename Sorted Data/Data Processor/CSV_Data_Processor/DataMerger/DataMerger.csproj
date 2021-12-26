@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>DataMerger.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSV_Processor\CSV_Processor.csproj" />
+    <ProjectReference Include="..\DataReader\DataReader.csproj" />
+  </ItemGroup>
+
+</Project>

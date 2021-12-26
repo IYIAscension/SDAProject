@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "CSV_Processor/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/CSV_Processor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CSV_Processor.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CSV_Processor/1.0.0": {
+      "type": "project",
+      "path": "../CSV_Processor/CSV_Processor.csproj",
+      "msbuildProject": "../CSV_Processor/CSV_Processor.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "CSV_Processor >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Marten\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\User\\Documents\\Data Analysis Project\\SDAProject\\Sorted Data\\Data Processor\\CSV_Data_Processor\\DataSplitter\\DataSplitter.csproj",
+      "projectName": "DataSplitter",
+      "projectPath": "E:\\User\\Documents\\Data Analysis Project\\SDAProject\\Sorted Data\\Data Processor\\CSV_Data_Processor\\DataSplitter\\DataSplitter.csproj",
+      "packagesPath": "C:\\Users\\Marten\\.nuget\\packages\\",
+      "outputPath": "E:\\User\\Documents\\Data Analysis Project\\SDAProject\\Sorted Data\\Data Processor\\CSV_Data_Processor\\DataSplitter\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Marten\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "E:\\User\\Documents\\Data Analysis Project\\SDAProject\\Sorted Data\\Data Processor\\CSV_Data_Processor\\CSV_Processor\\CSV_Processor.csproj": {
+              "projectPath": "E:\\User\\Documents\\Data Analysis Project\\SDAProject\\Sorted Data\\Data Processor\\CSV_Data_Processor\\CSV_Processor\\CSV_Processor.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

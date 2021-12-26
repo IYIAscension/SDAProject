@@ -1,0 +1,9 @@
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\bin\Debug\netcoreapp3.1\CSV_Processor.deps.json
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\bin\Debug\netcoreapp3.1\CSV_Processor.dll
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\bin\Debug\netcoreapp3.1\CSV_Processor.pdb
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\obj\Debug\netcoreapp3.1\CSV_Processor.csproj.AssemblyReference.cache
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\obj\Debug\netcoreapp3.1\CSV_Processor.AssemblyInfoInputs.cache
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\obj\Debug\netcoreapp3.1\CSV_Processor.AssemblyInfo.cs
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\obj\Debug\netcoreapp3.1\CSV_Processor.csproj.CoreCompileInputs.cache
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\obj\Debug\netcoreapp3.1\CSV_Processor.dll
+E:\User\Documents\Data Analysis Project\SDAProject\Sorted Data\Data Processor\CSV_Data_Processor\CSV_Processor\obj\Debug\netcoreapp3.1\CSV_Processor.pdb
