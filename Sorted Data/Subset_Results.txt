@@ -1,0 +1,54 @@
+
+EUROPE, total_deaths
+Average: 30334.176470588234
+Albania, 3101.0
+Andorra, 131.0
+Armenia, 7610.0
+Austria, 12553.0
+Azerbaijan, 7884.0
+Belarus, 5098.0
+Belgium, 27072.0
+Bosnia and Herzegovina, 12628.0
+Bulgaria, 28542.0
+Croatia, 10967.0
+Cyprus, 598.0
+Czechia, 33186.0
+Denmark, 2922.0
+Estonia, 1803.0
+Finland, 1348.0
+France, 120208.0
+Georgia, 12119.0
+Germany, 102183.0
+Greece, 18234.0
+Hungary, 34713.0
+Iceland, 35.0
+Ireland, 5707.0
+Italy, 133931.0
+Kazakhstan, 17856.0
+Kosovo, 2984.0
+Latvia, 4213.0
+Liechtenstein, 61.0
+Lithuania, 6759.0
+Luxembourg, 876.0
+Malta, 468.0
+Moldova, 9141.0
+Monaco, 36.0
+Montenegro, 2310.0
+Netherlands, 19909.0
+North Macedonia, 7592.0
+Norway, 1092.0
+Poland, 84153.0
+Portugal, 18458.0
+Romania, 56618.0
+Russia, 271091.0
+San Marino, 93.0
+Serbia, 11744.0
+Slovakia, 14503.0
+Slovenia, 5240.0
+Spain, 88080.0
+Sweden, 15161.0
+Switzerland, 11548.0
+Turkey, 77038.0
+Ukraine, 91860.0
+United Kingdom, 145586.0
+Vatican, 0.0
