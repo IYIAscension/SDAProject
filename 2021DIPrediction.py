@@ -4,6 +4,7 @@
 # Description: Predicts the 2021 index values and writes them to
 #              data/2021IndexPredictions.txt. Using "reuse" as an argument
 #              reuses the 2020 values as 2021 predictions.
+#              If not, amountVals, endMult and order can adjust predictions.
 
 import scipy.interpolate as intrp
 import numpy as np
