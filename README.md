@@ -24,4 +24,4 @@ We used the first network, based on Ridge, four our poster and analysis.
 
 For info about data processing files, see the readme.txt inside the Sorted Data folder.
 
-For info about Jan's files, please refer to the other readmes.
+For info about Jan-Joost's data(set) analysis, bootstrapping, plots please refer to the other readmefile 'readmes.txt'.
