@@ -1,3 +1,5 @@
+# Small script for quickly grabbing and printing statistics from a file,
+# for testing purposes.
 from data_importer import import_time_series, list_countries
 import sys
 

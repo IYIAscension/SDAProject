@@ -10,6 +10,7 @@ import numpy as np
 
 class Dataset:
     def __init__(self, country: str):
+        # Create filepaths and import all files.
         date = data_importer.import_dates(country + '/date.data')
         population = data_importer.import_time_series(
             country + '/population.data'
@@ -35,6 +36,7 @@ class Dataset:
             # November 30th, 2021
             (2021, 11, 30)
         )
+        # Convert to Numpy for speed-processing.
         self.__population = np.array(population[start:stop])
         self.__vaccinations = np.array(vaccinations[start:stop])
         self.__cases = np.array(cases[start:stop])
@@ -88,6 +90,14 @@ class Dataset:
 
 
 def gather() -> Dict[str, Dataset]:
+    """Gathers all of the data for each country and returns a dictionary
+    where the key is the country name and the value is the respective
+    dataset.
+
+    Returns:
+        Dict[str, Dataset]: The returned dictionary of country-specific
+        data.
+    """
     output = dict()
     for country in data_importer.list_countries():
         print(f'Parsing data for country [{country}]')

@@ -4,8 +4,10 @@ import os
 
 if __name__ == "__main__":
     names = []
+    # Loop over all directories.
     for x in os.walk('.'):
         name = x[0]
+        # Ignore certain directories.
         if name == '.':
             continue
 
@@ -20,5 +22,6 @@ if __name__ == "__main__":
             continue
 
         names.append(name[2:])
+    # List of names has been established. Dump it to a file.
     with open('countries.txt', 'w', encoding='utf8') as file:
         file.write('\n'.join(names))

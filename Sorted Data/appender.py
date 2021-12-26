@@ -6,7 +6,9 @@ if __name__ == "__main__":
     target_file = argv[-2]
     print(f"Source file: [{target_file}]")
     if not (target_file.endswith('.txt') or target_file.endswith('.csv')):
-        print("For safety, it is not allowed to append to a file that does not have the TXT or CSV extension.")
+        print(
+            "For safety, it is not allowed to append to a file that does not" +
+            " have the TXT or CSV extension.")
         exit(1)
 
     # Get the name of the dataset to append.

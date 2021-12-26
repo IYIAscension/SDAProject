@@ -226,19 +226,29 @@ def import_final(filepath: str) -> Optional[float]:
             if has_value > 0:
                 last_value = value
 
-
     return last_value
 
 
 def date_equal(a: Tuple[int, int, int], b: Tuple[int, int, int]) -> bool:
-    return a is not None and \
-           b is not None and \
-           a[0] == b[0] and a[1] == b[1] and a[2] == b[2]
+    """Returns true if the two given dates are equal."""
+    return a is not None and b is not None and \
+        a[0] == b[0] and a[1] == b[1] and a[2] == b[2]
 
 
 def limit_by_date(dates: List[Tuple[int, int, int]],
                   start: Tuple[int, int, int],
                   stop: Tuple[int, int, int]) -> Tuple[int, int]:
+    """Given a list of dates, and a start and end date, returns a tuple of
+    indices to slice by to limit datasets to the given range of dates.
+
+    Args:
+        dates (List[Tuple[int, int, int]]): The list of dates.
+        start (Tuple[int, int, int]): The starting date (inclusive).
+        stop (Tuple[int, int, int]): The stopping date (inclusive).
+
+    Returns:
+        Tuple[int, int]: The tuple of indices.
+    """
     out_start = 0
     out_end = len(dates) - 1
     for i in range(out_end + 1):
