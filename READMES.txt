@@ -1,3 +1,5 @@
+By Jan-Joost Raedts - 5841801
+
 README
 txt_import_export.py
 This file must be placed in the Sorted Data directory.
