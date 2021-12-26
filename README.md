@@ -7,7 +7,7 @@ We have the following hypotheses:
 H0: A higher degree of authoritarianism in a country doesn’t lead to a higher rate of vaccination per capita.
 H1: A higher degree of authoritarianism in a country leads to a higher rate of vaccination per capita.
 
-The data map has the csv files which we used for our analysis.
+The data map has the files which we used for our analysis.
 
 2021DIPrediction.py predicts the 2021 index values from the data/EIU_Data.csv file and places them into the data/2021indexPredictions.txt file.
 In it amountYears, endMult and order can be used to adjust predictions.
